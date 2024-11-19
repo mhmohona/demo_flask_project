@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cerbos Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Dashboard</h1>
+        <p>Cerbos Status: <strong>{{ cerbos_status }}</strong></p>
+        
+        {% if cerbos_status == "Running" %}
+            <p>Welcome to the dashboard! You have been successfully authorized by Cerbos.</p>
+            
+            <!-- Display the current dashboard content -->
+            <div class="alert alert-primary mt-4">
+                <h4>Dashboard Content:</h4>
+                <p>{{ dashboard_content }}</p>
+            </div>
+            
+            <!-- New Section to Highlight Cerbos's Role -->
+            <div class="alert alert-info mt-4">
+                <h4>Cerbos Authorization Details:</h4>
+                <ul>
+                    <li><strong>Role:</strong> {{ role }}</li>
+                    <li><strong>Permissions Granted:</strong>
+                        {% if can_edit and can_delete %}
+                            View, Edit, Delete Dashboard
+                        {% elif can_edit %}
+                            View, Edit Dashboard
+                        {% else %}
+                            View Dashboard Only
+                        {% endif %}
+                    </li>
+                    <li><strong>Policy Engine:</strong> Cerbos</li>
+                </ul>
+            </div>
+
+            <div class="badge bg-success mt-3">Access Authorized by Cerbos Policy Engine</div>
+
+            <!-- Buttons for Additional Actions -->
+            <div class="mt-5">
+                <h4>Available Actions:</h4>
+                
+                <!-- Edit Form - Only visible if the user can edit -->
+                <form action="/edit_dashboard?role={{ role }}" method="post" class="mb-3" {% if not can_edit %}style="display:none;"{% endif %}>
+                    <div class="mb-3">
+                        <label for="edited_content" class="form-label">Edit Dashboard Content:</label>
+                        <input type="text" id="edited_content" name="edited_content" class="form-control" placeholder="Enter new content">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+                
+                <!-- Delete Button - Only visible if the user can delete -->
+                <form action="/delete_dashboard?role={{ role }}" method="post" {% if not can_delete %}style="display:none;"{% endif %}>
+                    <button type="submit" class="btn btn-danger">Delete Dashboard Content</button>
+                </form>
+            </div>
+
+        {% elif cerbos_status == "Access denied - Cerbos authorization failed" %}
+            <p>Access denied. You are not authorized to view this page.</p>
+        
+        {% else %}
+            <p>Welcome, Guest! You have limited access to this page. Please contact the administrator for more permissions.</p>
+        {% endif %}
+        
+        <a href="/" class="btn btn-secondary mt-4">Back to Home</a>
+    </div>
+</body>
+</html>

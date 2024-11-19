@@ -1,0 +1,17 @@
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  version: "default"
+  resource: "dashboard"
+  rules:
+    - actions: ["view"]
+      effect: EFFECT_ALLOW
+      roles: ["admin", "editor", "viewer", "guest"]
+    - actions: ["edit"]
+      effect: EFFECT_ALLOW
+      roles: ["admin", "editor"]
+    - actions: ["delete"]
+      effect: EFFECT_ALLOW
+      roles: ["admin"]
+    - actions: ["view"]
+      effect: EFFECT_DENY
+      roles: ["restricted"]
