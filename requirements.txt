@@ -1,3 +1,6 @@
 Flask
 flask_restful
 cerbos[testcontainers]>=0.10.1
+requests
+logging
+python-dotenv

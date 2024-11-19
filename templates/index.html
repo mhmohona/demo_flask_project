@@ -11,6 +11,13 @@
         <h1>Welcome to the Cerbos Demo Application</h1>
         <p>This is a simple Flask application that uses Cerbos for authorization.</p>
         <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
+        <div class="mt-3">
+            <h4>Choose a Role to Simulate:</h4>
+            <a href="/dashboard?role=guest" class="btn btn-outline-secondary">Guest</a>
+            <a href="/dashboard?role=viewer" class="btn btn-outline-primary">Viewer</a>
+            <a href="/dashboard?role=editor" class="btn btn-outline-info">Editor</a>
+            <a href="/dashboard?role=admin" class="btn btn-outline-danger">Admin</a>
+        </div>
     </div>
 </body>
 </html>
