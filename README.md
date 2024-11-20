@@ -55,18 +55,29 @@ First, install cerbos following the [documentation](https://docs.cerbos.dev/cerb
 
   Can view, edit, and delete the dashboard content.
 
-
+  ![image](https://github.com/user-attachments/assets/81241fda-bb93-4390-b96d-7db4be36bf6e)
 
 - **Editor role**: [Editor Dashboard](http://127.0.0.1:5000/dashboard?role=editor)
   Can view and edit the dashboard content.
 
+  ![image](https://github.com/user-attachments/assets/0e162c46-1972-4746-a1d4-b418da49c709)
+
 - **Viewer role**: [Viewer Dashboard](http://127.0.0.1:5000/dashboard?role=viewer)
   Can only view the dashboard content.
 
+  ![image](https://github.com/user-attachments/assets/a913a7a5-3872-414e-914b-203ae3737927)
+
+
 - **Restricted role**: [Restricted Dashboard](http://127.0.0.1:5000/dashboard?role=restricted)
   Cannot access the dashboard.
+
+  ![image](https://github.com/user-attachments/assets/389fffc4-7d87-4ea9-af2e-8bcc9f6d5fc8)
+
 - **Guest role**: [Guest Dashboard](http://127.0.0.1:5000/dashboard?role=guest)
   Can view but cannot edit or delete.
+
+  ![image](https://github.com/user-attachments/assets/a871a171-cc60-450d-b8ef-cc0f25055e8e)
+
 
 ## How Cerbos Is Used
 - The **`is_authorized`** function in [`cerbos_service.py`](cerbos_service.py) interacts with Cerbos to check if a user has permission to perform a specific action.
