@@ -11,6 +11,8 @@ The following technologies are used in this demo:
 - HTML for creating simple templates with Bootstrap for styling.
 - Python for server-side logic.
 
+For more details on the authorization implementation, check out my blog post: [Adding Authorization to a Flask App](https://medium.com/@mhmohona/adding-authorization-to-your-flask-app-a-beginners-guide-66d48db11176)
+
 ## Features
 
 - **Role-based Access Control**: Users are assigned different roles (Guest, Viewer, Editor, Admin) which dictate their access to various actions such as viewing, editing, or deleting the dashboard content.
