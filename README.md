@@ -19,6 +19,27 @@ For more details on the authorization implementation, check out my blog post: [A
 - **Cerbos Integration**: The Flask app makes use of Cerbos policies to determine the access rights of different roles.
 - **User-friendly Dashboard**: The project features a simple dashboard with role-specific actions that are enabled or disabled based on the user's permissions.
 
+Here is a diagram that shows in our project how Cerbos integrates with the Flask app to manage role-based access control:
+
+  ```mermaid
+graph TD
+    subgraph Flask_App
+        A[User Request] -->|Role Query| B[app.py]
+        B -->|Authorization Check| C[cerbos_service.py]
+        C -->|Construct Payload| D[call_cerbos_api]
+    end
+
+    subgraph Cerbos
+        D -->|Policies Evaluation| E[resource_policy.yaml]
+        E --> F[Evaluate Rules]
+        F -->|Return Authorization| G[Permission Response]
+    end
+
+    C -->|Response| H[Authorize Action]
+    H -->|Render Based on Permissions| I[Render dashboard.html]
+    A -->|Result| J[Dashboard with Permissions]
+```
+
 ## Folder Structure
 
 - **app.py**: Main Flask application file containing route definitions and application logic. Routes include home (`/`) and dashboard (`/dashboard`) views, as well as endpoints for editing and deleting dashboard content.
